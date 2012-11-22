@@ -3,12 +3,28 @@ Copyright Lukasz Szybalski
 VIN Vehicle information number checker,
 Inputs vin number and outputs true/false 
 """
+from libvin.static import ALPHA_NUMBER_CONVERSION, VIN_ENTRY_ERROR_MAP
 
-def is_valid(vin):
-    """Vehicle Information Number. This will return whether the entered vin number is authentic/correct.
+
+def convert_vin(field):
+    """Stores alpha to number conversion as defined by the vehicle information number standard.
+    """
+    if field.isdigit():
+        return int(field)
+    else:
+        if field in ALPHA_NUMBER_CONVERSION:
+            return ALPHA_NUMBER_CONVERSION[field]
+        else:
+            return False
+            
+def is_valid_vin(vin):
+    """
+    Vehicle Information Number. This will return whether the entered vin number is authentic/correct.
+    
     Example:
-    import vin
-    vin.check_vin(my_vin_number)
+    
+    >>> import libvin
+    >>> libvin.is_valid_vin(my_vin_number)
     """
     vin=str(vin).strip()
     if len(vin) != 17:
@@ -30,4 +46,19 @@ def is_valid(vin):
         else:
             return False
 
-
+def repair_vin(vin):
+	"""
+	Attempts to repair a VIN for common data entry errors.
+	
+	"""
+	o = ''
+	vin = vin.upper()
+	
+	for c in vin:
+		if c in VIN_ENTRY_ERROR_MAP:
+			o += VIN_ENTRY_ERROR_MAP[c]
+		else:
+			o += c
+	
+	return o
+		

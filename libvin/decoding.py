@@ -66,6 +66,7 @@ class Vin(object):
             does not permit the use of the characters U and Z, as well 
             as the numeric zero (0)
             """
+            # FIXME: Some 1980 vehicles by Ford and AMC use this.
             return False
 
         elif self.vin[8] not in 'X0123456789':
@@ -78,6 +79,7 @@ class Vin(object):
             return False
 
         else:
+            # FIXME: This does not actually verify the checksum
             return True
 
     @property
@@ -140,7 +142,7 @@ class Vin(object):
         if self.is_pre_2010:
             return YEARS_CODES_PRE_2010[self.vin[9]]
         else:
-            print self.vin[9]
+            #print self.vin[9]
             return YEARS_CODES_PRE_2040[self.vin[9]]
 
 

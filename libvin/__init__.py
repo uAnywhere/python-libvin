@@ -1,3 +1,2 @@
-from conversion import convert
-from decoding import decode
-from verification import is_valid
+from decoding import Vin
+from verification import is_valid_vin, repair_vin

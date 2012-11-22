@@ -171,6 +171,7 @@ WORLD_MANUFACTURER_MAP = {
 }
 
 YEARS_CODES_PRE_2010 = {
+    '0': 1980, # Some manufacturers used "0" as 1980.
     'A': 1980, 'L': 1990, 'Y': 2000,
     'B': 1981, 'M': 1991, '1': 2001,
     'C': 1982, 'N': 1992, '2': 2002,
@@ -184,6 +185,7 @@ YEARS_CODES_PRE_2010 = {
 }
 
 YEARS_CODES_PRE_2040 = {
+    '0': 2010, # Some manufacturers used "0" as 2010
     'A': 2010,	'L': 2020, 'Y': 2030,
     'B': 2011,	'M': 2021, '1': 2031,
     'C': 2012,	'N': 2022, '2': 2032,
@@ -195,3 +197,20 @@ YEARS_CODES_PRE_2040 = {
     'J': 2018,	'W': 2028, '8': 2038,
     'K': 2019,	'X': 2029, '9': 2039,
 }
+
+ALPHA_NUMBER_CONVERSION = {
+    # I, O and Q are invalid
+    'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8,
+    'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5,         'P': 7,         'R': 9,
+            'S': 2, 'T': 3, 'U': 4, 'V': 5, 'W': 6, 'X': 7, 'Y': 8, 'Z': 9
+}
+
+# maps common data entry errors to valid VINs
+VIN_ENTRY_ERROR_MAP = {
+	'+': 'T',
+	'O': '0',
+	'Q': '0',
+	'I': '1',
+}
+
+
